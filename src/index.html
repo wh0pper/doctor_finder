@@ -6,7 +6,12 @@
   </head>
   <body>
     <div class='container'>
-      <h2>Search for doctors:</h2>
+      <h2>Search for doctors:</h2><hr>
+      <form class='locationForm form-group'>
+        <label for='location'>Enter your location (city, address, or zipcode):</label>
+        <input class='form-control' type='text' id='location' value=''><br>
+        <button type='submit' class='btn btn-dark'>Submit</button>
+      </form>
       <form class='doctorSearchForm form-group'>
         <label for='name'>Doctor's name:</label>
         <input class='form-control' type='text' id='name' value=''>
@@ -17,6 +22,7 @@
         <br>
         <button class='btn btn-info' type='submit'>Search</button>
       </form>
+      <button type='button' id='newSearch' class='btn btn-warning'>New Search</button>
       <div class='doctorList'>
 
       </div>

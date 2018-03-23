@@ -1,5 +1,9 @@
-body {
-  background-color: red;
+.doctorSearchForm {
+  display: none;
+}
+
+#newSearch {
+  display: none;
 }
 
 .bd-callout {

@@ -1,13 +1,12 @@
 import {DoctorSearch} from './doctor';
 import $ from 'jquery';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles.css';
 
 function displayData(results) {
   $('.doctorList').text('');
   if (results.data.length === 0) {
     $('.doctorList').text('No results found.');
-  } else {
-    $('.doctorList').text('Results:');
   }
   results.data.forEach(function(doctor) {
     let specialty = (doctor.specialties[0] == undefined) ? 'No specialty listed':doctor.specialties[0].name;
@@ -17,9 +16,20 @@ function displayData(results) {
 
 $(document).ready(function() {
   let parameters = {'specialty': '', 'ailment': '', 'name': ''};
+
+  $('.locationForm').submit(function(event) {
+    event.preventDefault();
+
+
+    $('.locationForm').hide();
+    $('.doctorSearchForm').show();
+  });
+
   $('.doctorSearchForm').submit(function(event) {
 
     event.preventDefault();
+    $('.doctorSearchForm').hide();
+    $('#newSearch').show();
     $('.doctorList').text('Finding results...');
 
     parameters.name = $('#name').val();
@@ -36,5 +46,9 @@ $(document).ready(function() {
       error = JSON.parse(error);
       $('.doctorList').text('There was an error processing your request. Reason: ' + error.meta.message);
     });
+  });
+
+  $('#newSearch').click(function(event) {
+    $('.doctorSearchForm').show();
   })
 });
