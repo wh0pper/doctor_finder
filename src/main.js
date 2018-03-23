@@ -1,5 +1,6 @@
 import {DoctorSearch} from './doctor';
 import $ from 'jquery';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function displayData(results) {
   $('.doctorList').text('');
@@ -9,7 +10,8 @@ function displayData(results) {
     $('.doctorList').text('Results:');
   }
   results.data.forEach(function(doctor) {
-    $('.doctorList').append(`<p>${doctor.profile.last_name}</p>`);
+    let specialty = (doctor.specialties[0] == undefined) ? 'No specialty listed':doctor.specialties[0].name;
+    $('.doctorList').append(`<p class='bd-callout bd-callout-info'>${doctor.profile.last_name}, ${doctor.profile.first_name} - ${specialty}</p>`);
   })
 }
 
