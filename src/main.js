@@ -16,14 +16,16 @@ function displayData(results) {
 }
 
 $(document).ready(function() {
-  let parameters = {'specialty': '', 'ailment': '', 'name': '', 'other': ''};
+  let parameters = {'specialty': '', 'ailment': '', 'name': ''};
   $('.doctorSearchForm').submit(function(event) {
 
     event.preventDefault();
+    $('.doctorList').text('Finding results...');
+
     parameters.name = $('#name').val();
     parameters.ailment = $('#ailment').val();
     parameters.specialty = $('#specialty').val();
-    parameters.other = $('#other').val();
+
     let list = new DoctorSearch(parameters);
     console.log(list);
     list.getDoctors().then(function(response) {
