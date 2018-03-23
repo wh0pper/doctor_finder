@@ -14,7 +14,6 @@ export class DoctorSearch {
     let innerPromise = Helper.getGeocode(that.location).then(function(response) {
       let position = Helper.parseGeocode(response);
       let key = process.env.exports.apiKey;
-      console.log(key);
       let url = `https://api.betterdoctor.com/2016-03-01/doctors?name=${that.name}&query=${that.ailment}&specialty_uid=${that.specialty}&location=${position}&limit=${that.numResults}&user_key=${key}`
       return new Promise(function(resolve, reject) {
         let request = new XMLHttpRequest();
@@ -22,7 +21,6 @@ export class DoctorSearch {
           if (this.status === 200) {
             resolve(request.response);
           } else {
-            console.log(request.response);
             reject(request.response);
           }
         }

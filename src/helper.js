@@ -21,7 +21,6 @@ export class Helper {
 
   static parseGeocode(response) {
     //parses latitude and longitude from geocode and returns formatted string for api call
-
     let latitude = response.results[0].geometry.location.lat.toFixed(3);
     let longitude = response.results[0].geometry.location.lng.toFixed(3);
     console.log(latitude, longitude);
