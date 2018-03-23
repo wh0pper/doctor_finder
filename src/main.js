@@ -19,7 +19,7 @@ $(document).ready(function() {
 
   $('.locationForm').submit(function(event) {
     event.preventDefault();
-
+    parameters.location = $('#location').val();
 
     $('.locationForm').hide();
     $('.doctorSearchForm').show();
