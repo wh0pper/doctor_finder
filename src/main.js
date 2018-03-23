@@ -1,4 +1,5 @@
 import {DoctorSearch} from './doctor';
+import {Helper} from './helper';
 import $ from 'jquery';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
@@ -12,7 +13,7 @@ function displayData(results) {
     let specialty = (doctor.specialties[0] == undefined) ? 'No specialty listed':doctor.specialties[0].name;
     let address = (doctor.practices[0].visit_address == undefined) ? 'No address listed':`${doctor.practices[0].visit_address.street} ${doctor.practices[0].visit_address.city}, ${doctor.practices[0].visit_address.state} ${doctor.practices[0].visit_address.zip}`;
     let website = (doctor.practices[0].website == undefined) ? 'No website listed':`<a href='${doctor.practices[0].website}' target='_blank'>Visit their site</a>`;
-    let phone = doctor.practices[0].phones.filter(function(phone){return phone.type == 'landline'})[0].number; //isolates landline of first practice
+    let phone = Helper.formatPhone(doctor.practices[0].phones.filter(function(phone){return phone.type == 'landline'})[0].number); //isolates landline of first practice
     let open = (doctor.practices[0].accepts_new_patients) ? 'yes':'no';
 
     $('.doctorList').append(`<div class='bd-callout'>${doctor.profile.last_name}, ${doctor.profile.first_name} - ${specialty}<div class='moreInfo'><br><img class='image' src='${doctor.profile.image_url}'><br> ${address}<br>Main phone number: ${phone}<br>Accepting new patients? ${open}<br>${website}</div></div>`);

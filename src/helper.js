@@ -28,5 +28,10 @@ export class Helper {
     return `${latitude}%2C${longitude}%2C25`; //defaults to a range of 25 miles
   }
 
-
+  static formatPhone(string) {
+    let area = string.slice(0,3);
+    let first = string.slice(3,6);
+    let second = string.slice(6,9);
+    return `(${area}) ${first}-${second}`;
+  }
 }
