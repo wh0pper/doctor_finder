@@ -2,7 +2,7 @@ import {Helper} from './helper.js';
 
 export class DoctorSearch {
   constructor(parameters) {
-    this.location =  parameters.location; //'45.523%2C-122.676%2C25' //hardcoding Portland for now, with 25 mile range;
+    this.location = parameters.location; //'45.523%2C-122.676%2C25' //hardcoding Portland for now, with 25 mile range;
     this.specialty = parameters.specialty;
     this.ailment = parameters.ailment;
     this.name = parameters.name;

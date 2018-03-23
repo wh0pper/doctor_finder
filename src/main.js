@@ -11,9 +11,15 @@ function displayData(results) {
   results.data.forEach(function(doctor) {
     let specialty = (doctor.specialties[0] == undefined) ? 'No specialty listed':doctor.specialties[0].name;
     let address = (doctor.practices[0].visit_address == undefined) ? 'No address listed':`${doctor.practices[0].visit_address.street} ${doctor.practices[0].visit_address.city}, ${doctor.practices[0].visit_address.state} ${doctor.practices[0].visit_address.zip}`;
-    $('.doctorList').append(`<div class='bd-callout bd-callout-info'>${doctor.profile.last_name}, ${doctor.profile.first_name} - ${specialty}, ${address}</div>`);
+    $('.doctorList').append(`<div class='bd-callout'>${doctor.profile.last_name}, ${doctor.profile.first_name} - ${specialty}<div class='moreInfo'><br><img class='image' src='${doctor.profile.image_url}'> ${address}</div></div>`);
+  })
+  $('.bd-callout').click(function(event) {
+    console.log(this);
+    $(this).siblings().children().slideUp();
+    $(this).children().slideDown();
   })
 }
+
 
 $(document).ready(function() {
   let parameters = {'specialty': '', 'ailment': '', 'name': ''};
@@ -51,5 +57,8 @@ $(document).ready(function() {
 
   $('#newSearch').click(function(event) {
     $('.doctorSearchForm').show();
+    $('#newSearch').hide();
   })
+
+
 });
