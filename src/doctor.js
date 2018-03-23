@@ -9,7 +9,7 @@ export class DoctorSearch {
   }
 
   getDoctors() {
-    let key = 'f845c0444fa19113c09c78cfefd663f5';
+    let key = 'f845c0444fa19113c09c78cfefd663f5d';
     let url = `https://api.betterdoctor.com/2016-03-01/doctors?name=${this.name}&query=${this.otherSearch}&specialty_uid=${this.specialty}&location=${this.location}&user_key=${key}`
     console.log(url);
     return new Promise(function(resolve, reject) {
@@ -18,7 +18,8 @@ export class DoctorSearch {
         if (this.status === 200) {
           resolve(request.response);
         } else {
-          reject(Error(request.statusText));
+          console.log(request.response);
+          reject(request.response);
         }
       }
       request.open("GET", url, true);
