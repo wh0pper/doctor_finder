@@ -45,7 +45,7 @@ $(document).ready(function() {
     parameters.name = $('#name').val();
     parameters.ailment = $('#ailment').val();
     parameters.specialty = $('#specialty').val();
-
+    parameters.numResults = $('#number').val();
     let list = new DoctorSearch(parameters);
     console.log(list);
     list.getDoctors().then(function(response) {

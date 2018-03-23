@@ -6,6 +6,7 @@ export class DoctorSearch {
     this.specialty = parameters.specialty;
     this.ailment = parameters.ailment;
     this.name = parameters.name;
+    this.numResults = parameters.numResults;
   }
 
   getDoctors() {
@@ -14,7 +15,7 @@ export class DoctorSearch {
       let position = Helper.parseGeocode(response);
       console.log(position);
       let key = 'f845c0444fa19113c09c78cfefd663f5';
-      let url = `https://api.betterdoctor.com/2016-03-01/doctors?name=${that.name}&query=${that.ailment}&specialty_uid=${that.specialty}&location=${position}&limit=20&user_key=${key}`
+      let url = `https://api.betterdoctor.com/2016-03-01/doctors?name=${that.name}&query=${that.ailment}&specialty_uid=${that.specialty}&location=${position}&limit=${that.numResults}&user_key=${key}`
       console.log(url);
       return new Promise(function(resolve, reject) {
         let request = new XMLHttpRequest();
