@@ -1,21 +1,18 @@
-export class Map {
-  constructor(parameters) {
-    this.center = parameters.center;
-    this.locations = parameters.locations; //holds locations of current search to be mapped
-  }
+const loadGoogleMapsApi = require('load-google-maps-api');
 
-  static initMap() {
-    var map;
-    map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 2,
-      center: new google.maps.LatLng(2.8,-187.3),
-      mapTypeId: 'terrain'
-    });
 
-  }
+export loadGoogleMapsApi().then(function (googleMaps) {
+  new googleMaps.Map(document.querySelector('.map'), {
+    center: {
+      lat: 40.7484405,
+      lng: -73.9944191
+    },
+    zoom: 12
+  })
+}).catch(function (error) {
+  console.error(error)
+})
 
-}
-window.initMap = Map.initMap;
 
 
 // window.eqfeed_callback = function(results) {
