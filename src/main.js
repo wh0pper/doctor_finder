@@ -3,6 +3,7 @@ import {Helper} from './helper';
 import $ from 'jquery';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
+import {Map} from './map';
 
 function displayData(results) {
   $('.doctorList').text('');
@@ -32,7 +33,8 @@ $(document).ready(function() {
   $('.locationForm').submit(function(event) {
     event.preventDefault();
     parameters.location = $('#location').val();
-
+    $('#head').text(`Search for doctors near ${parameters.location}:`)
+    $('#changeLocation').show();
     $('.locationForm').hide();
     $('.doctorSearchForm').show();
   });
@@ -65,5 +67,10 @@ $(document).ready(function() {
     $('#newSearch').hide();
   })
 
+  $('#changeLocation').click(function(event) {
+    $('#changeLocation').hide();
+    $('.locationForm').show();
+    $('.doctorSearchForm').hide();
+  });
 
 });

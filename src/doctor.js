@@ -13,10 +13,9 @@ export class DoctorSearch {
     let that = this;
     let innerPromise = Helper.getGeocode(that.location).then(function(response) {
       let position = Helper.parseGeocode(response);
-      let key = process.env.apiKey;
+      let key = process.env.exports.apiKey;
       console.log(key);
       let url = `https://api.betterdoctor.com/2016-03-01/doctors?name=${that.name}&query=${that.ailment}&specialty_uid=${that.specialty}&location=${position}&limit=${that.numResults}&user_key=${key}`
-      console.log(url);
       return new Promise(function(resolve, reject) {
         let request = new XMLHttpRequest();
         request.onload = function() {
