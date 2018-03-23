@@ -8,8 +8,9 @@ export class DoctorSearch {
   }
 
   getDoctors() {
+    let url = `https://api.betterdoctor.com/2016-03-01/doctors?name=${this.name}&query=${this.otherSearch}&specialty_uid=${this.specialty}&location=${this.location}&user_key=${process.env.API_KEY}`
+    console.log(url);
     return new Promise(function(resolve, reject) {
-      let url = `https://api.betterdoctor.com/2016-03-01/doctors?name=${this.name}&query=${this.otherSearch}&specialty_uid=${this.specialty}&location=${this.location}&user_key=${process.env.API_KEY}`
       let request = new XMLHttpRequest();
       request.onload = function() {
         if (this.status === 200) {
