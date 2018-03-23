@@ -13,8 +13,8 @@ export class DoctorSearch {
     let that = this;
     let innerPromise = Helper.getGeocode(that.location).then(function(response) {
       let position = Helper.parseGeocode(response);
-      console.log(position);
-      let key = 'f845c0444fa19113c09c78cfefd663f5';
+      let key = process.env.apiKey;
+      console.log(key);
       let url = `https://api.betterdoctor.com/2016-03-01/doctors?name=${that.name}&query=${that.ailment}&specialty_uid=${that.specialty}&location=${position}&limit=${that.numResults}&user_key=${key}`
       console.log(url);
       return new Promise(function(resolve, reject) {

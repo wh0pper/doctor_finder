@@ -26,6 +26,7 @@ function displayData(results) {
 
 
 $(document).ready(function() {
+
   let parameters = {'specialty': '', 'ailment': '', 'name': ''};
 
   $('.locationForm').submit(function(event) {
