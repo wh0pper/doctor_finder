@@ -1,7 +1,7 @@
 {
   "name": "doctor_finder",
   "version": "1.0.0",
-  "description": "1. Configuration/dependencies/Objectives       Business logic is thoroughly tested with Jasmine.       Karma is set up correctly.       Project utilizes ES6 features including classes, let and const.       Dependencies are managed with npm.       Application uses webpack to lint, bundle, and process code.       Project is in a polished, portfolio-quality state. (Clear code presentation, error free, complete README, commit history, etc.)       Specs were committed before any code.       Required functionality was in place by the Friday deadline.       Project demonstrates understanding of week's concepts. If prompted, you are able to discuss your code with an instructor using correct terminology.",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "npm run build; karma start karma.conf.js",

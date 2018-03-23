@@ -1,14 +1,31 @@
 import {DoctorSearch} from './doctor';
 import $ from 'jquery';
 
+function displayData(results) {
+  $('.doctorList').text('');
+  results.data.forEach(function(doctor) {
+    $('.doctorList').append(`<p>${doctor.profile.last_name}</p>`);
+
+  })
+}
+
 $(document).ready(function() {
   let parameters = {'specialty': '', 'ailment': '', 'name': '', 'other': ''};
-  let list = new DoctorSearch(parameters);
-  console.log(list);
-  list.getDoctors().then(function(response) {
-    let body = JSON.parse(response);
-    console.log(body);
-  }, function(error) {
-    console.log('error');
-  });
+  $('.doctorSearchForm').submit(function(event) {
+
+    event.preventDefault();
+    parameters.name = $('#name').val();
+    // parameters.ailment = $('#ailment').val();
+    // parameters.specialty = $('#specialty').val();
+    // parameters.other = $('#other').val();
+    let list = new DoctorSearch(parameters);
+    console.log(list);
+    list.getDoctors().then(function(response) {
+      let body = JSON.parse(response);
+      console.log(body);
+      displayData(body);
+    }, function(error) {
+      console.log('error');
+    });
+  })
 });
