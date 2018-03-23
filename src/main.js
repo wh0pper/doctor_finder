@@ -10,7 +10,8 @@ function displayData(results) {
   }
   results.data.forEach(function(doctor) {
     let specialty = (doctor.specialties[0] == undefined) ? 'No specialty listed':doctor.specialties[0].name;
-    $('.doctorList').append(`<p class='bd-callout bd-callout-info'>${doctor.profile.last_name}, ${doctor.profile.first_name} - ${specialty}</p>`);
+    let address = (doctor.practices[0].visit_address == undefined) ? 'No address listed':`${doctor.practices[0].visit_address.street} ${doctor.practices[0].visit_address.city}, ${doctor.practices[0].visit_address.state} ${doctor.practices[0].visit_address.zip}`;
+    $('.doctorList').append(`<div class='bd-callout bd-callout-info'>${doctor.profile.last_name}, ${doctor.profile.first_name} - ${specialty}, ${address}</div>`);
   })
 }
 
