@@ -5,6 +5,8 @@ function displayData(results) {
   $('.doctorList').text('');
   if (results.data.length === 0) {
     $('.doctorList').text('No results found.');
+  } else {
+    $('.doctorList').text('Results:');
   }
   results.data.forEach(function(doctor) {
     $('.doctorList').append(`<p>${doctor.profile.last_name}</p>`);
